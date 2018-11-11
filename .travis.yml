@@ -1,20 +1,29 @@
 language: python
-python: 3.6
 sudo: false
 
 branches:
-    only:
-        - master
-        - /^\d\.\d+$/
+  only:
+  - master
+  - /^\d\.\d+$/
+
+matrix:
+  include:
+  - python: 3.6
+    env: TOXENV=py36
+  - python: 3.7
+    env: TOXENV=py37
+    dist: xenial
+    sudo: true
+
 
 install:
-    - pip install -U tox codecov
+- pip install -U tox codecov
 
 script: tox
 
 after_success:
-    - codecov
+- codecov
 
 cache:
-    directories:
-        - $HOME/.cache/pip
+  directories:
+  - $HOME/.cache/pip
