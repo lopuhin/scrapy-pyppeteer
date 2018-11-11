@@ -3,7 +3,8 @@ import asyncio
 import pyppeteer
 from twisted.internet.defer import Deferred
 
-from .browser_request import BrowserRequest, BrowserResponse
+from .browser_request import BrowserRequest
+from .browser_response import BrowserResponse
 
 
 class ScrapyPyppeteerDownloaderMiddleware:
