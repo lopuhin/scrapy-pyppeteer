@@ -93,12 +93,19 @@ works is shown below
 -- this allows to interact with a page from a REPL and observe effects in the
 browser window.
 
+Notes on memory usage
+---------------------
+
+- Note that items yielded from a single parse method are kept in memory
+  while the parse method is running, as well as all local variables
+  (the former is less obvious). Yielding a large number of big items from one
+  parse method can increase the memory usage of your spider.
+  Consider splitting work into several other parse methods.
+
 TODO
 ----
 
 - More tests, set up CI
-- Are all items from one parse call kept in memory?
-  Can we have long-running parse methods?
 - Manage closing tabs (also think about pypy in the future)
 - A way to control max number of tabs open
 - A way to schedule interactions reusing the same window
