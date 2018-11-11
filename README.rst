@@ -117,7 +117,9 @@ TODO
 
 - More tests, set up CI
 - Set response status and headers
+- A more ergonomic way to close the tab by default?
 - A way to schedule interactions reusing the same window
-  (to continue working in the same time but go through the scheduler)
+  (to continue working in the same time but go through the scheduler), making
+  sure one tab is used only by one parse method.
 - Nice extraction API (like parsel)
 - A way to limit max number of tabs open (a bit tricky)
