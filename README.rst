@@ -84,3 +84,15 @@ works is shown below
 
 -- this allows to interact with a page from a REPL and observe effects in the
 browser window.
+
+TODO
+----
+
+- More tests, set up CI
+- Are all items from one parse call kept in memory?
+  Can we have long-running parse methods?
+- Manage closing tabs (also think about pypy in the future)
+- A way to control max number of tabs open
+- A way to schedule interactions reusing the same window
+  (to continue working in the same time but go through the scheduler)
+- Nice extraction API (like parsel)
