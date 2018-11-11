@@ -73,6 +73,13 @@ Short example of the parse method
             yield BrowserRequest(url)
         await page.close()
 
+Settings
+--------
+
+- ``PYPPETEER_LAUNCH``: a dict with pyppeteer launch options, see
+  ``pyppeteer.launch`` docstring.
+
+
 Notes on memory usage
 ---------------------
 

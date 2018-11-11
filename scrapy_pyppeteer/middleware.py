@@ -4,6 +4,7 @@ from typing import Optional
 
 import pyppeteer
 from pyppeteer.browser import Browser
+from scrapy.settings import Settings
 from twisted.internet.defer import Deferred
 
 from .browser_request import BrowserRequest
@@ -17,9 +18,13 @@ class ScrapyPyppeteerDownloaderMiddleware:
     """ Handles launching browser tabs, acts as a downloader.
     Probably eventually this should be moved to scrapy core as a downloader.
     """
-    def __init__(self):
-        # TODO handle pyppeteer.launch configuration here (e.g. headless=True)
+    def __init__(self, settings: Settings):
         self._browser: Optional[Browser] = None
+        self._launch_options = settings.getdict('PYPPETEER_LAUNCH') or {}
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings)
 
     def process_request(self, request, spider):
         if isinstance(request, BrowserRequest):
@@ -29,7 +34,7 @@ class ScrapyPyppeteerDownloaderMiddleware:
 
     async def process_browser_request(self, request: BrowserRequest):
         if self._browser is None:
-            self._browser = await pyppeteer.launch()
+            self._browser = await pyppeteer.launch(**self._launch_options)
         page = await self._browser.newPage()
         n_tabs = _n_browser_tabs(self._browser)
         logger.debug(f'{n_tabs} tabs open')
