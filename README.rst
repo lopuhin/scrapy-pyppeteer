@@ -84,7 +84,7 @@ Notes on memory usage
 ---------------------
 
 - You need to explicitly close the browser tab once you don't need it
-  (e.g. at the end of the parse method)
+  (e.g. at the end of the parse method).
 - Items yielded from a single parse method are kept in memory
   while the parse method is running, as well as all local variables
   (the former is less obvious). Yielding a large number of big items from one
@@ -117,7 +117,7 @@ TODO
 
 - More tests, set up CI
 - Set response status and headers
-- A way to control max number of tabs open
 - A way to schedule interactions reusing the same window
   (to continue working in the same time but go through the scheduler)
 - Nice extraction API (like parsel)
+- A way to limit max number of tabs open (a bit tricky)
