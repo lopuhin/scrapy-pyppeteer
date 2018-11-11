@@ -1,6 +1,14 @@
 scrapy-pyppeeteer: use pyppeteer from a Scrapy spider
 =====================================================
 
+.. image:: https://img.shields.io/travis/lopuhin/scrapy-pyppeteer/master.svg
+   :target: http://travis-ci.org/lopuhin/scrapy-pyppeteer
+   :alt: Build Status
+
+.. image:: https://codecov.io/github/lopuhin/scrapy-pyppeteer/coverage.svg?branch=master
+   :target: https://codecov.io/github/lopuhin/scrapy-pyppeteer?branch=master
+   :alt: Code Coverage
+
 The goal is to allow using `pyppeteer <https://github.com/miyakogi/pyppeteer>`_
 (a python port of puppeteer) from a `scrapy <https://scrapy.org>`_ spider.
 This allows to scrape sites that require JS to function properly

@@ -1,0 +1,2 @@
+git+https://github.com/lopuhin/scrapy.git@async-def-parse
+git+https://github.com/lopuhin/pyppeteer.git
