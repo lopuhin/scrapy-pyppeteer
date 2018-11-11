@@ -71,6 +71,18 @@ Short example of the parse method
         for link in await page.querySelectorAll('a'):
             url = await page.evaluate('link => link.href', link)
             yield BrowserRequest(url)
+        await page.close()
+
+Notes on memory usage
+---------------------
+
+- You need to explicitly close the browser tab once you don't need it
+  (e.g. at the end of the parse method)
+- Items yielded from a single parse method are kept in memory
+  while the parse method is running, as well as all local variables
+  (the former is less obvious). Yielding a large number of big items from one
+  parse method can increase the memory usage of your spider.
+  Consider splitting work into several other parse methods.
 
 Debugging
 ---------
@@ -93,20 +105,11 @@ works is shown below
 -- this allows to interact with a page from a REPL and observe effects in the
 browser window.
 
-Notes on memory usage
----------------------
-
-- Note that items yielded from a single parse method are kept in memory
-  while the parse method is running, as well as all local variables
-  (the former is less obvious). Yielding a large number of big items from one
-  parse method can increase the memory usage of your spider.
-  Consider splitting work into several other parse methods.
-
 TODO
 ----
 
 - More tests, set up CI
-- Manage closing tabs (also think about pypy in the future)
+- Set response status and headers
 - A way to control max number of tabs open
 - A way to schedule interactions reusing the same window
   (to continue working in the same time but go through the scheduler)

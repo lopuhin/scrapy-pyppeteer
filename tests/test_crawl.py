@@ -26,6 +26,7 @@ class FollowAllSpider(BaseSpider):
         for link in await page.querySelectorAll('a'):
             url = await page.evaluate('link => link.href', link)
             yield BrowserRequest(url)
+        await page.close()
 
 
 class CrawlTestCase(TestCase):
